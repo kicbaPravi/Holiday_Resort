@@ -9,7 +9,7 @@ import defaultImg from "../images/defaultBcg.jpeg";
 
 export default class SingleRoom extends Component {
   state = {
-    slug: this.props.match.params.slug
+    slug: this.props.match.params.slug,
   };
 
   static contextType = RoomContext;
@@ -17,8 +17,6 @@ export default class SingleRoom extends Component {
   render() {
     const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
-
-    console.log(room);
 
     if (!room) {
       return (
@@ -46,7 +44,7 @@ export default class SingleRoom extends Component {
       extras,
       breakfast,
       pets,
-      images
+      images,
     } = room;
 
     const [mainImg, ...otherImgs] = images;
@@ -61,7 +59,7 @@ export default class SingleRoom extends Component {
             {otherImgs.map((item, index) => {
               return (
                 <div className={style.item}>
-                  <img key={index} src={item} alt={name} />
+                  <img key={item.price} src={item} alt={name} />
                 </div>
               );
             })}
